@@ -76,13 +76,13 @@ node -v
 ```javascript
 // ❌ 錯誤：直接修改原陣列
 function addToCart(carts, product, quantity) {
-	carts.push({ product, quantity });
-	return carts;
+  carts.push({ product, quantity });
+  return carts;
 }
 
 // ✓ 正確：回傳新陣列
 function addToCart(carts, product, quantity) {
-	return [...carts, { id: "cart-new", product, quantity }];
+  return [...carts, { id: "cart-new", product, quantity }];
 }
 ```
 
