@@ -259,10 +259,12 @@ function generateOrderReport(orders) {
  * }
  */
 function groupOrdersByPayment(orders) {
-  return {
-    'ATM': orders.filter(order => order.user.payment === 'ATM'),
-    'Credit Card': orders.filter(order => order.user.payment === 'Credit Card')
-  };
+  return orders.reduce((prev, cur) => {
+    const paymentMethod = cur.user.payment;
+    prev[paymentMethod] = prev[paymentMethod] || [];
+    prev[paymentMethod].push(cur);
+    return prev;
+  }, {});
 }
 
 // ========================================
